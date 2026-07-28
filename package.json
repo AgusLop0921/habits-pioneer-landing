@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "astro": "^5.13.0",
@@ -15,5 +16,8 @@
     "@fontsource-variable/outfit": "^5.2.5",
     "@fontsource/dm-sans": "^5.2.5",
     "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
   }
 }
