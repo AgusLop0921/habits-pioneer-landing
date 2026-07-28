@@ -1,0 +1,143 @@
+---
+import '../styles/tokens.css';
+import StoneLogo from '../components/StoneLogo.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const site = Astro.site?.href.replace(/\/$/, '') ?? 'https://habitspioneer.com';
+const canonical = site + Astro.url.pathname.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/og/og-cover.png`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#F7F4EF" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="legal-header">
+      <div class="container legal-header-inner">
+        <a class="brand" href="/" aria-label="Habits Pioneer">
+          <StoneLogo width={26} />
+          <span class="wordmark">Habits Pioneer</span>
+        </a>
+        <a class="home-link" href="/">← Home</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container legal-wrap">
+        <article class="legal">
+          <slot />
+        </article>
+      </div>
+    </main>
+
+    <Footer lang="en" />
+
+    <style>
+      .legal-header {
+        border-bottom: 1px solid var(--border);
+      }
+      .legal-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .wordmark {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 17px;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .home-link {
+        color: var(--muted);
+        font-size: 14.5px;
+        font-weight: 500;
+      }
+      .home-link:hover {
+        color: var(--violet);
+      }
+      .legal-wrap {
+        max-width: 760px;
+        padding-top: 48px;
+        padding-bottom: 72px;
+      }
+      .legal :global(h1) {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: clamp(30px, 1.6rem + 3vw, 40px);
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        margin: 0 0 8px;
+      }
+      .legal :global(.date) {
+        color: var(--muted-2);
+        font-size: 14.5px;
+        margin: 0 0 32px;
+      }
+      .legal :global(h2) {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 21px;
+        letter-spacing: -0.01em;
+        margin: 40px 0 12px;
+      }
+      .legal :global(p) {
+        color: var(--ink-2);
+        font-size: 16.5px;
+        line-height: 1.7;
+        margin: 0 0 16px;
+      }
+      .legal :global(ul) {
+        margin: 0 0 16px;
+        padding-left: 22px;
+        color: var(--ink-2);
+        font-size: 16.5px;
+        line-height: 1.7;
+      }
+      .legal :global(li) {
+        margin-bottom: 8px;
+      }
+      .legal :global(a) {
+        color: var(--violet-deep);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .legal :global(a:hover) {
+        color: var(--violet);
+      }
+      .legal :global(strong) {
+        color: var(--ink);
+        font-weight: 600;
+      }
+    </style>
+  </body>
+</html>

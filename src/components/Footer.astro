@@ -1,0 +1,67 @@
+---
+import { STR, type Locale } from '../data/strings';
+import StoneLogo from './StoneLogo.astro';
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = STR[lang];
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <StoneLogo width={22} />
+      <span>{t.footerRights}</span>
+    </div>
+    <nav class="footer-links" aria-label={t.footerContact}>
+      <a href="/terms">{t.footerTerms}</a>
+      <a href="/privacy">{t.footerPrivacy}</a>
+      <a href="mailto:aguslop0921@gmail.com">{t.footerContact}</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 8px;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 44px;
+    padding-bottom: 64px;
+    font-size: 14.5px;
+    color: var(--muted-2);
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-links a {
+    color: var(--muted);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer-links a:hover {
+    color: var(--violet);
+  }
+  @media (max-width: 520px) {
+    .footer-inner {
+      justify-content: flex-start;
+      gap: 18px;
+    }
+  }
+</style>

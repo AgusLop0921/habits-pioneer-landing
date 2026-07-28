@@ -38,7 +38,8 @@ export interface Strings {
   privKicker: string; privTitle: string; privBody: string;
   priv1: string; priv1b: string; priv2: string; priv2b: string; priv3: string; priv3b: string;
   finalTitle: string; finalSub: string; finalNote: string;
-  footerRights: string; footerLang: string;
+  footerRights: string; footerLang: string; footerContact: string;
+  footerTerms: string; footerPrivacy: string;
   // meta (added for SEO — not in prototype)
   metaTitle: string; metaDescription: string; ogImageAlt: string;
 }
@@ -103,7 +104,8 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Encrypted backups', priv3b: 'Local backups with the key in your system keychain. Delete everything whenever you want.',
     finalTitle: 'Better habits, every day.', finalSub: 'Add the good, drop the bad. All in one calm app.',
     finalNote: 'iOS 16+ and Android 10+ · Free to start',
-    footerRights: '© 2026 Habits Pioneer', footerLang: 'Language',
+    footerRights: '© 2026 Habits Pioneer', footerLang: 'Language', footerContact: 'Contact',
+    footerTerms: 'Terms', footerPrivacy: 'Privacy',
     metaTitle: 'Habits Pioneer — Better habits, every day, with an AI coach',
     metaDescription: 'Build good habits, quit the bad ones and rest better. An AI coach that adapts to your life, reduction habits, a sleep module, tasks and a journal — all in one calm, offline-first app for iOS and Android.',
     ogImageAlt: 'Habits Pioneer app on a phone, showing the home screen with habits and progress.',
@@ -167,7 +169,8 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Respaldos cifrados', priv3b: 'Backups locales con la clave en el llavero del sistema. Borrás todo cuando quieras.',
     finalTitle: 'Mejores hábitos, cada día.', finalSub: 'Sumá lo bueno, dejá lo malo. Todo en una app calma.',
     finalNote: 'iOS 16+ y Android 10+ · Empezá gratis',
-    footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma',
+    footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contacto',
+    footerTerms: 'Términos', footerPrivacy: 'Privacidad',
     metaTitle: 'Habits Pioneer — Mejores hábitos, cada día, con un coach de IA',
     metaDescription: 'Construí buenos hábitos, dejá los malos y descansá mejor. Un coach de IA que se adapta a tu vida, hábitos de reducción, un módulo de sueño, tareas y un diario — todo en una app calma y offline-first para iOS y Android.',
     ogImageAlt: 'La app Habits Pioneer en un teléfono, mostrando la pantalla de inicio con hábitos y progreso.',
@@ -231,7 +234,8 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Backups criptografados', priv3b: 'Backups locais com a chave no chaveiro do sistema. Apague tudo quando quiser.',
     finalTitle: 'Melhores hábitos, todo dia.', finalSub: 'Some o bom, largue o ruim. Tudo em um app calmo.',
     finalNote: 'iOS 16+ e Android 10+ · Comece grátis',
-    footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma',
+    footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contato',
+    footerTerms: 'Termos', footerPrivacy: 'Privacidade',
     metaTitle: 'Habits Pioneer — Melhores hábitos, todo dia, com um coach de IA',
     metaDescription: 'Construa bons hábitos, largue os ruins e descanse melhor. Um coach de IA que se adapta à sua vida, hábitos de redução, um módulo de sono, tarefas e um diário — tudo em um app calmo e offline-first para iOS e Android.',
     ogImageAlt: 'O app Habits Pioneer em um celular, mostrando a tela inicial com hábitos e progresso.',

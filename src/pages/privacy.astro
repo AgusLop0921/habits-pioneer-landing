@@ -1,0 +1,111 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  title="Privacy Policy — Habits Pioneer"
+  description="Privacy Policy for the Habits Pioneer app: what data we collect, how it is stored, and your rights over it."
+>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: July 10, 2026</p>
+
+  <p>
+    Habits Pioneer ("we", "our", or "the app") is a habit tracking and task management application. This
+    Privacy Policy explains what data we collect, how we use it, and your rights over it.
+  </p>
+
+  <h2>1. Data We Collect</h2>
+  <p>Habits Pioneer collects only the data you explicitly create inside the app:</p>
+  <ul>
+    <li><strong>Habits</strong> — name, emoji, frequency, and daily completion history</li>
+    <li><strong>Tasks</strong> — title, priority, category, and completion status</li>
+    <li><strong>Sleep logs</strong> — bedtime, wake time, quality rating, and habit checklist</li>
+    <li><strong>Journal entries</strong> — mood, daily score, and reflections you write</li>
+    <li><strong>App preferences</strong> — language, theme, and sounds setting</li>
+    <li><strong>Email address</strong> — only if you choose to sign in with Google or Apple for cloud sync</li>
+  </ul>
+  <p>
+    We do <strong>not</strong> collect any information about how you use the app, device identifiers, location,
+    contacts, photos, or any other data beyond what you enter.
+  </p>
+
+  <h2>2. How Data Is Stored</h2>
+  <p>You have full control over where your data lives:</p>
+  <ul>
+    <li>
+      <strong>Local mode (no account required):</strong> All data is stored exclusively on your device using
+      AsyncStorage. It never leaves your device. We have no access to it.
+    </li>
+    <li>
+      <strong>Cloud sync mode (optional):</strong> If you choose to sign in, your data is encrypted in transit and
+      stored on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a> servers (hosted on AWS in
+      the US). Only your account can access your data — enforced by Row Level Security policies.
+    </li>
+  </ul>
+
+  <h2>3. Sign-In (Google &amp; Apple)</h2>
+  <p>
+    Cloud sync uses Google OAuth or Sign in with Apple through Supabase. When you sign in, we receive your email
+    address and a unique identifier to link your data. We do not receive your password, contacts, calendar, or any
+    other account data. If you use Sign in with Apple, you may choose to hide your email, in which case we only
+    receive Apple's private relay address.
+  </p>
+
+  <h2>4. AI Coach Feature</h2>
+  <p>
+    Habits Pioneer includes an optional AI Coach feature powered by
+    <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic</a> (Claude AI). When you use the AI
+    Coach, the messages you send in that session are transmitted to Anthropic's API to generate a response.
+    <strong>We do not store your conversations on our servers.</strong> Each session starts fresh — no chat history is
+    saved or linked to your account.
+  </p>
+  <p>
+    The AI Coach may receive a compact, anonymized summary of your habit data (e.g. "3 active habits, daily completion
+    rate 70%") to personalize its responses. This summary is sent only during the session and is not stored. Anthropic
+    processes messages in accordance with their
+    <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>. You are never
+    required to use the AI Coach.
+  </p>
+
+  <h2>5. Third-Party Services</h2>
+  <p>Third-party services used by Habits Pioneer:</p>
+  <ul>
+    <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase</a> — cloud sync (optional)</li>
+    <li>
+      <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> — AI Coach
+      feature (optional, session-only, no data stored)
+    </li>
+  </ul>
+  <p>We do not use advertising networks, analytics SDKs, or crash reporting services.</p>
+
+  <h2>6. Data Retention &amp; Deletion</h2>
+  <p><strong>Local mode:</strong> Your data exists only on your device. Deleting the app removes all data.</p>
+  <p>
+    <strong>Cloud mode:</strong> You can permanently delete your account and all associated cloud data at any time from
+    within the app: go to <em>Settings → Cloud Sync → Delete account</em>. This action is irreversible. Your email
+    address and all habit, task, sleep, and journal data will be permanently removed from our servers within 30 days.
+  </p>
+
+  <h2>7. Data Sharing</h2>
+  <p>
+    We do not sell, rent, trade, or share your personal data with any third parties, except as required by law.
+  </p>
+
+  <h2>8. Children's Privacy</h2>
+  <p>
+    Habits Pioneer does not knowingly collect data from children under 13. If you believe a child has provided
+    personal information, please contact us and we will delete it promptly.
+  </p>
+
+  <h2>9. Changes to This Policy</h2>
+  <p>
+    We may update this policy from time to time. We will notify you of significant changes by updating the date at the
+    top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <h2>10. Contact</h2>
+  <p>
+    If you have any questions about this Privacy Policy or want to exercise your data rights, contact us at:
+    <a href="mailto:aguslop0921@gmail.com">aguslop0921@gmail.com</a>
+  </p>
+</LegalLayout>

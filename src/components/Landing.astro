@@ -2,6 +2,7 @@
 import { STR, localePrefix, LOCALES, type Locale } from '../data/strings';
 import StoneLogo from './StoneLogo.astro';
 import StoreButtons from './StoreButtons.astro';
+import Footer from './Footer.astro';
 
 interface Props {
   lang: Locale;
@@ -394,26 +395,7 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
   </div>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <StoneLogo width={20} />
-        <span>{t.footerRights}</span>
-      </div>
-      <div class="footer-lang">
-        <span>{t.footerLang}</span>
-        <nav class="lang-switch" aria-label={t.footerLang}>
-          {
-            LOCALES.map((l) => (
-              <a href={home(l)} class={`lang-pill ${l === lang ? 'on' : ''}`} aria-current={l === lang ? 'true' : undefined} hreflang={l}>
-                {langLabel[l]}
-              </a>
-            ))
-          }
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <Footer lang={lang} />
 </main>
 
 <style>
@@ -1277,31 +1259,6 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
     margin: 24px 0 0;
     font-size: 13.5px;
     color: var(--muted-2);
-  }
-
-  /* ---------- footer ---------- */
-  .site-footer {
-    border-top: 1px solid var(--border);
-  }
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-    padding-top: 28px;
-    padding-bottom: 56px;
-    font-size: 14px;
-    color: var(--muted-2);
-  }
-  .footer-brand,
-  .footer-lang {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .footer-lang {
-    gap: 16px;
   }
 
   /* ---------- responsive ---------- */
