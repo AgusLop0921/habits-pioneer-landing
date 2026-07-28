@@ -34,3 +34,4 @@ npm run preview    # serve the built dist/
 
 Static output — host `dist/` anywhere: **Vercel / Netlify / Cloudflare Pages / EAS Hosting**.
 Most hosts auto-detect Astro; otherwise: build command `npm run build`, output dir `dist`.
+# habits-pioneer-landing
