@@ -11,7 +11,7 @@ export const HTML_LANG: Record<Locale, string> = {
 
 export interface Strings {
   navCoach: string; navHabits: string; navSleep: string; navPrivacy: string; navCta: string;
-  heroKicker: string; heroTitle: string; heroSub: string; heroNote: string;
+  heroKicker: string; heroTitle: string; heroSub: string; heroNote: string; heroNoteIos: string;
   storeApplePre: string; storeGooglePre: string;
   trust1: string; trust1b: string; trust2: string; trust2b: string;
   trust3: string; trust3b: string; trust4: string; trust4b: string;
@@ -37,7 +37,7 @@ export interface Strings {
   galleryTitle: string; gallerySub: string; gal1: string; gal2: string; gal3: string;
   privKicker: string; privTitle: string; privBody: string;
   priv1: string; priv1b: string; priv2: string; priv2b: string; priv3: string; priv3b: string;
-  finalTitle: string; finalSub: string; finalNote: string;
+  finalTitle: string; finalSub: string; finalNote: string; finalNoteIos: string;
   footerRights: string; footerLang: string; footerContact: string;
   footerTerms: string; footerPrivacy: string;
   // meta (added for SEO — not in prototype)
@@ -51,6 +51,7 @@ export const STR: Record<Locale, Strings> = {
     heroTitle: 'Build the version of you that you want to be.',
     heroSub: 'One habit at a time, with a coach that actually gets your life. Calm, guilt-free, and it works offline.',
     heroNote: 'Free to start · iOS and Android · English, Español, Português',
+    heroNoteIos: 'Free to start · iOS · English, Español, Português',
     storeApplePre: 'Download on the', storeGooglePre: 'Get it on',
     trust1: 'Offline-first', trust1b: 'Works with no connection',
     trust2: 'Account optional', trust2b: 'Use it without one, or sign in to sync',
@@ -104,6 +105,7 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Encrypted backups', priv3b: 'Local backups with the key in your system keychain. Delete everything whenever you want.',
     finalTitle: 'Better habits, every day.', finalSub: 'Add the good, drop the bad. All in one calm app.',
     finalNote: 'iOS 16+ and Android 10+ · Free to start',
+    finalNoteIos: 'iOS 16+ · Free to start',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Language', footerContact: 'Contact',
     footerTerms: 'Terms', footerPrivacy: 'Privacy',
     metaTitle: 'Habits Pioneer — Better habits, every day, with an AI coach',
@@ -116,6 +118,7 @@ export const STR: Record<Locale, Strings> = {
     heroTitle: 'Construí la versión de vos que querés ser.',
     heroSub: 'Un hábito por vez, con un coach que entiende tu vida. Calma, sin culpa, y funciona sin conexión.',
     heroNote: 'Empezá gratis · iOS y Android · Español, English, Português',
+    heroNoteIos: 'Empezá gratis · iOS · Español, English, Português',
     storeApplePre: 'Descargalo en el', storeGooglePre: 'Disponible en',
     trust1: 'Offline-first', trust1b: 'Funciona sin conexión',
     trust2: 'Cuenta opcional', trust2b: 'Usala sin cuenta, o logueate para sincronizar',
@@ -169,6 +172,7 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Respaldos cifrados', priv3b: 'Backups locales con la clave en el llavero del sistema. Borrás todo cuando quieras.',
     finalTitle: 'Mejores hábitos, cada día.', finalSub: 'Sumá lo bueno, dejá lo malo. Todo en una app calma.',
     finalNote: 'iOS 16+ y Android 10+ · Empezá gratis',
+    finalNoteIos: 'iOS 16+ · Empezá gratis',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contacto',
     footerTerms: 'Términos', footerPrivacy: 'Privacidad',
     metaTitle: 'Habits Pioneer — Mejores hábitos, cada día, con un coach de IA',
@@ -181,6 +185,7 @@ export const STR: Record<Locale, Strings> = {
     heroTitle: 'Construa a versão de você que você quer ser.',
     heroSub: 'Um hábito por vez, com um coach que entende a sua vida. Calmo, sem culpa, e funciona offline.',
     heroNote: 'Comece grátis · iOS e Android · Português, Español, English',
+    heroNoteIos: 'Comece grátis · iOS · Português, Español, English',
     storeApplePre: 'Baixe na', storeGooglePre: 'Disponível no',
     trust1: 'Offline-first', trust1b: 'Funciona sem conexão',
     trust2: 'Conta opcional', trust2b: 'Use sem conta, ou entre para sincronizar',
@@ -234,6 +239,7 @@ export const STR: Record<Locale, Strings> = {
     priv3: 'Backups criptografados', priv3b: 'Backups locais com a chave no chaveiro do sistema. Apague tudo quando quiser.',
     finalTitle: 'Melhores hábitos, todo dia.', finalSub: 'Some o bom, largue o ruim. Tudo em um app calmo.',
     finalNote: 'iOS 16+ e Android 10+ · Comece grátis',
+    finalNoteIos: 'iOS 16+ · Comece grátis',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contato',
     footerTerms: 'Termos', footerPrivacy: 'Privacidade',
     metaTitle: 'Habits Pioneer — Melhores hábitos, todo dia, com um coach de IA',

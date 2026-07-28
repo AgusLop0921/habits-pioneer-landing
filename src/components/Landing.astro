@@ -1,5 +1,6 @@
 ---
 import { STR, localePrefix, LOCALES, type Locale } from '../data/strings';
+import { SHOW_GOOGLE_PLAY } from '../data/config';
 import StoneLogo from './StoneLogo.astro';
 import StoreButtons from './StoreButtons.astro';
 import Footer from './Footer.astro';
@@ -57,7 +58,7 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
         <h1 class="hero-title">{t.heroTitle}</h1>
         <p class="hero-sub">{t.heroSub}</p>
         <StoreButtons lang={lang} variant="hero" />
-        <p class="hero-note">{t.heroNote}</p>
+        <p class="hero-note">{SHOW_GOOGLE_PLAY ? t.heroNote : t.heroNoteIos}</p>
       </div>
       <div class="hero-visual">
         <div class="hero-glow" aria-hidden="true"></div>
@@ -390,7 +391,7 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
       <h2 class="h2 h2-final">{t.finalTitle}</h2>
       <p class="final-sub">{t.finalSub}</p>
       <div class="final-stores"><StoreButtons lang={lang} variant="final" /></div>
-      <p class="final-note">{t.finalNote}</p>
+      <p class="final-note">{SHOW_GOOGLE_PLAY ? t.finalNote : t.finalNoteIos}</p>
     </section>
   </div>
 

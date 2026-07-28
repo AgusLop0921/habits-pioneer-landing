@@ -1,6 +1,7 @@
 ---
 import '../styles/tokens.css';
 import { STR, HTML_LANG, LOCALES, localePrefix, type Locale } from '../data/strings';
+import { SHOW_GOOGLE_PLAY } from '../data/config';
 
 interface Props {
   lang: Locale;
@@ -17,7 +18,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MobileApplication',
   name: 'Habits Pioneer',
-  operatingSystem: 'iOS, Android',
+  operatingSystem: SHOW_GOOGLE_PLAY ? 'iOS, Android' : 'iOS',
   applicationCategory: 'HealthApplication',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   description: t.metaDescription,
