@@ -1,0 +1,254 @@
+/* ============================================================
+   Habits Pioneer — design tokens (from the handoff spec)
+   ============================================================ */
+@import '@fontsource-variable/outfit';
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+
+:root {
+  /* surfaces */
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --surface-warm: #fff6ee;
+  --surface-violet: #efeaff;
+  --surface-green: #f3f7f3;
+  --screen-empty: #f0ebe3;
+
+  /* ink / text */
+  --ink: #171310;
+  --ink-2: #3a322c;
+  --muted: #5c534b;
+  --muted-2: #6e655c; /* handoff #8A8078 darkened to pass WCAG AA on cream */
+  --kicker: #6f5a31; /* handoff #A08D6E darkened to pass WCAG AA (4.5:1 on cream + white) */
+
+  /* borders */
+  --border: #ede6dc;
+  --border-2: #e5ded4;
+  --border-btn: #e2dbd0;
+  --border-warm: #f2e1cf;
+  --stone-track: #e3dacd;
+
+  /* accents */
+  --violet: #7c5cfc;
+  --violet-deep: #5b41c7;
+  --violet-soft: #c9b8ff;
+  --violet-line: #e0d7ff;
+  --orange: #f07a2b;
+  --amber: #e5a03c;
+  --coral: #de7358;
+  --stone: #cdc3b4;
+  --green: #4caf7d;
+
+  /* night (sleep section) */
+  --night: #1b1723;
+  --night-2: #0e0b14;
+  --night-3: #2a2436;
+  --on-night: #f2eee8;
+  --on-night-2: #bdb4ac;
+  --on-night-3: #a79c93;
+  --on-night-4: #a79be0;
+
+  /* type */
+  --font-head: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* fluid headings */
+  --h1: clamp(34px, 1.6rem + 4.6vw, 60px);
+  --h2: clamp(29px, 1.6rem + 2.6vw, 42px);
+  --h2-sub: clamp(28px, 1.6rem + 2.2vw, 40px);
+  --h2-final: clamp(31px, 1.6rem + 3vw, 46px);
+  --h2-gallery: clamp(26px, 1.6rem + 1.8vw, 36px);
+  --h3-28: clamp(23px, 1.2rem + 1vw, 28px);
+
+  /* layout */
+  --maxw: 1180px;
+  --gutter: 24px;
+  --section-gap: clamp(72px, 10vw, 120px);
+}
+
+/* ---- reset / base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: clip; /* never scroll horizontally; safe for sticky header */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--violet);
+}
+button {
+  font-family: inherit;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  margin: 0;
+}
+::selection {
+  background: #e9e2ff;
+}
+
+/* visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* skip link */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  transition: top 0.16s ease;
+}
+.skip-link:focus {
+  top: 12px;
+  color: var(--bg);
+}
+
+/* shared layout helpers */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kicker);
+  margin: 0 0 14px;
+}
+
+/* ---- keyframes (from the prototype) ---- */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes bob2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes settle {
+  0% {
+    transform: translateY(-28px) scaleX(0.82);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(2px) scaleX(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ringGrow {
+  from {
+    stroke-dashoffset: 396;
+  }
+}
+@keyframes barGrow {
+  from {
+    transform: scaleY(0.05);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.8;
+  }
+}
+
+/* ---- reduced motion: reveal everything, kill looping/scroll motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-step],
+  [data-steplabel] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  [data-steppath] {
+    stroke-dashoffset: 0 !important;
+  }
+}

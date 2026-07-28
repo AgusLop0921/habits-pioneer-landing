@@ -1,0 +1,1395 @@
+---
+import { STR, localePrefix, LOCALES, type Locale } from '../data/strings';
+import StoneLogo from './StoneLogo.astro';
+import StoreButtons from './StoreButtons.astro';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = STR[lang];
+const langLabel: Record<Locale, string> = { es: 'ES', en: 'EN', pt: 'PT' };
+const home = (l: Locale) => `${localePrefix[l]}/` || '/';
+const steps = [t.step1, t.step2, t.step3, t.step4, t.step5, t.step6];
+const challengeDays = [14, 21, 30, 45, 66, 90];
+---
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="Habits Pioneer">
+      <StoneLogo width={26} idle={true} />
+      <span class="wordmark">Habits Pioneer</span>
+    </a>
+    <nav class="main-nav" aria-label={t.navHabits}>
+      <a href="#coach">{t.navCoach}</a>
+      <a href="#habits">{t.navHabits}</a>
+      <a href="#sleep">{t.navSleep}</a>
+      <a href="#privacy">{t.navPrivacy}</a>
+    </nav>
+    <div class="header-right">
+      <nav class="lang-switch" aria-label="Language">
+        {
+          LOCALES.map((l) => (
+            <a
+              href={home(l)}
+              class={`lang-pill ${l === lang ? 'on' : ''}`}
+              aria-current={l === lang ? 'true' : undefined}
+              hreflang={l}
+            >
+              {langLabel[l]}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="cta-btn" href="#download">{t.navCta}</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <!-- ===================== HERO ===================== -->
+    <section id="top" class="hero">
+      <div class="hero-copy">
+        <p class="hero-kicker">{t.heroKicker}</p>
+        <h1 class="hero-title">{t.heroTitle}</h1>
+        <p class="hero-sub">{t.heroSub}</p>
+        <StoreButtons lang={lang} variant="hero" />
+        <p class="hero-note">{t.heroNote}</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="phone phone-hero">
+          <div class="phone-screen">
+            <img
+              src="/screenshots/home.webp"
+              width="1290"
+              height="2796"
+              alt={t.ogImageAlt}
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST STRIP ===================== -->
+    <div class="trust-strip">
+      <div class="trust-cell"><div class="trust-t">{t.trust1}</div><div class="trust-b">{t.trust1b}</div></div>
+      <div class="trust-cell"><div class="trust-t">{t.trust2}</div><div class="trust-b">{t.trust2b}</div></div>
+      <div class="trust-cell"><div class="trust-t">{t.trust3}</div><div class="trust-b">{t.trust3b}</div></div>
+      <div class="trust-cell"><div class="trust-t">{t.trust4}</div><div class="trust-b">{t.trust4b}</div></div>
+    </div>
+
+    <!-- ===================== SIX STEPS ===================== -->
+    <section class="steps-section" aria-labelledby="steps-h">
+      <div class="section-head center">
+        <p class="eyebrow">{t.stepsKicker}</p>
+        <h2 id="steps-h" class="h2">{t.stepsTitle}</h2>
+        <p class="section-sub">{t.stepsSub}</p>
+      </div>
+
+      <ol class="steps-mobile" aria-label={t.stepsTitle}>
+        {
+          steps.map((s, i) => (
+            <li>
+              <span class="sm-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="sm-label">{s}</span>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="steps-illus" data-steps aria-hidden="true">
+        <svg viewBox="0 0 1000 680" class="steps-svg" aria-hidden="true">
+          <path
+            d="M200,90 H800 C930,90 930,340 800,340 H250 C120,340 120,590 250,590 H780"
+            fill="none"
+            stroke="var(--stone-track)"
+            stroke-width="3"
+            stroke-linecap="round"></path>
+          <path
+            data-steppath
+            d="M200,90 H800 C930,90 930,340 800,340 H250 C120,340 120,590 250,590 H780"
+            fill="none"
+            stroke="#DE7358"
+            stroke-width="3"
+            stroke-linecap="round"></path>
+          <circle data-step cx="200" cy="90" r="15" fill="#DE7358" style="transform-origin:200px 90px"></circle>
+          <circle data-step cx="800" cy="90" r="15" fill="#E5A03C" style="transform-origin:800px 90px"></circle>
+          <circle data-step cx="800" cy="340" r="15" fill="#7C5CFC" style="transform-origin:800px 340px"></circle>
+          <circle data-step cx="250" cy="340" r="15" fill="#DE7358" style="transform-origin:250px 340px"></circle>
+          <circle data-step cx="250" cy="590" r="15" fill="#E5A03C" style="transform-origin:250px 590px"></circle>
+          <circle data-step cx="780" cy="590" r="15" fill="#7C5CFC" style="transform-origin:780px 590px"></circle>
+          <g data-marker class="step-marker">
+            <circle r="22" fill="#F7F4EF"></circle>
+            <ellipse cy="-5" rx="9" ry="5" fill="#DE7358"></ellipse>
+            <ellipse cy="3" rx="13" ry="6.5" fill="#E5A03C"></ellipse>
+            <ellipse cy="11" rx="7" ry="4" fill="#CDC3B4"></ellipse>
+          </g>
+        </svg>
+        {
+          [
+            { l: '20%', tp: '13.24%', tr: 'translate(-50%,-100%)', pad: 'pb' },
+            { l: '80%', tp: '13.24%', tr: 'translate(-50%,-100%)', pad: 'pb' },
+            { l: '80%', tp: '50%', tr: 'translate(-50%,0)', pad: 'pt' },
+            { l: '25%', tp: '50%', tr: 'translate(-50%,0)', pad: 'pt' },
+            { l: '25%', tp: '86.76%', tr: 'translate(-50%,-100%)', pad: 'pb' },
+            { l: '78%', tp: '86.76%', tr: 'translate(-50%,-100%)', pad: 'pb' },
+          ].map((pos, i) => (
+            <div
+              class={`step-label-wrap ${pos.pad}`}
+              style={`left:${pos.l};top:${pos.tp};transform:${pos.tr}`}
+            >
+              <div class="step-label" data-steplabel>
+                <div class="step-index">{String(i + 1).padStart(2, '0')}</div>
+                <div class="step-text">{steps[i]}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===================== COACH ===================== -->
+    <section id="coach" class="coach-card" aria-labelledby="coach-h">
+      <div class="phone phone-coach">
+        <div class="phone-screen">
+          <img src="/screenshots/coach.webp" width="1290" height="2796" alt="Habits Pioneer AI coach chat" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow violet">{t.coachKicker}</p>
+        <h2 id="coach-h" class="h2 h2-sub">{t.coachTitle}</h2>
+        <p class="lead">{t.coachBody}</p>
+        <ul class="bullets">
+          <li><span class="dot" style="background:var(--violet)"></span><span>{t.coach1}</span></li>
+          <li><span class="dot" style="background:var(--amber)"></span><span>{t.coach2}</span></li>
+          <li><span class="dot" style="background:var(--coral)"></span><span>{t.coach3}</span></li>
+        </ul>
+        <p class="privacy-note">{t.coachPrivacy}</p>
+      </div>
+    </section>
+
+    <!-- ===================== HABITS ===================== -->
+    <section id="habits" class="habits-section" aria-labelledby="habits-h">
+      <div class="section-head">
+        <p class="eyebrow">{t.habitsKicker}</p>
+        <h2 id="habits-h" class="h2">{t.habitsTitle}</h2>
+        <p class="section-sub">{t.habitsSub}</p>
+      </div>
+
+      <div class="freq-grid">
+        <div class="card freq-card">
+          <div class="chip" style="background:#FBEAE4"><span style="background:var(--coral)"></span></div>
+          <h3>{t.freq1}</h3><p>{t.freq1b}</p>
+        </div>
+        <div class="card freq-card">
+          <div class="chip" style="background:#FBF0DD"><span style="background:var(--amber)"></span></div>
+          <h3>{t.freq2}</h3><p>{t.freq2b}</p>
+        </div>
+        <div class="card freq-card">
+          <div class="chip" style="background:var(--surface-violet)"><span style="background:var(--violet)"></span></div>
+          <h3>{t.freq3}</h3><p>{t.freq3b}</p>
+        </div>
+      </div>
+
+      <div class="reduce-grid">
+        <div class="reduce-card">
+          <span class="reduce-tag">{t.reduceTag}</span>
+          <h3 class="h3-28">{t.reduceTitle}</h3>
+          <p class="reduce-body">{t.reduceBody}</p>
+          <div class="reduce-stat">
+            <svg width="66" height="66" viewBox="0 0 140 140" aria-hidden="true">
+              <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border-warm)" stroke-width="16"></circle>
+              <circle
+                data-ring
+                cx="70" cy="70" r="58" fill="none" stroke="var(--orange)" stroke-width="16"
+                stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="277"
+                transform="rotate(-90 70 70)" class="ring-anim"></circle>
+            </svg>
+            <div class="reduce-stat-txt">
+              <div class="reduce-stat-v">{t.reduceStat}</div>
+              <div class="reduce-stat-s">{t.reduceStatSub}</div>
+            </div>
+          </div>
+        </div>
+        <div class="reduce-shot">
+          <img src="/screenshots/habits.webp" width="1290" height="2796" alt="Habits Pioneer habit list with a reduction habit" loading="lazy" decoding="async" />
+        </div>
+      </div>
+
+      <div class="card phases-card">
+        <h3 class="h3-22">{t.phasesTitle}</h3>
+        <div class="phases-grid">
+          <div class="phase warm">
+            <div class="phase-label" style="color:#8A6A38">{t.phase1}</div>
+            <div class="phase-v">{t.phase1v}</div>
+            <div class="phase-bar warm"><span style="width:100%"></span></div>
+            <div class="phase-s">{t.phase1s}</div>
+          </div>
+          <div class="phase warm">
+            <div class="phase-label" style="color:#8A6A38">{t.phase2}</div>
+            <div class="phase-v">{t.phase2v}</div>
+            <div class="phase-bar warm"><span style="width:50%"></span></div>
+            <div class="phase-s">{t.phase2s}</div>
+          </div>
+          <div class="phase green">
+            <div class="phase-label" style="color:#4E7359">{t.phase3}</div>
+            <div class="phase-v">{t.phase3v}</div>
+            <div class="phase-bar green"><span style="width:8%"></span></div>
+            <div class="phase-s">{t.phase3s}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-panel">
+        <div>
+          <p class="eyebrow violet">{t.coachKicker}</p>
+          <h3 class="h3-28">{t.challengeTitle}</h3>
+          <p class="challenge-body">{t.challengeBody}</p>
+          <div class="day-chips">
+            {challengeDays.map((d) => <span class={`day-chip ${d === 21 ? 'on' : ''}`}>{d} {t.daysWord}</span>)}
+          </div>
+        </div>
+        <div class="challenge-card">
+          <div class="challenge-badge"><span class="cb-dot"></span><span>🔥 Día 14 / 21</span></div>
+          <p class="challenge-quote">{t.challengeQuote}</p>
+          <div class="challenge-bar"><span style="width:67%"></span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== SLEEP (full-bleed dark) ===================== -->
+  <div class="container">
+    <section id="sleep" class="sleep-section" aria-labelledby="sleep-h">
+      <div class="sleep-grid">
+        <div>
+          <p class="eyebrow sleep-kicker">{t.sleepKicker}</p>
+          <h2 id="sleep-h" class="h2 h2-sub sleep-title">{t.sleepTitle}</h2>
+          <p class="sleep-body">{t.sleepBody}</p>
+          <div class="sleep-cards">
+            <div class="sleep-card"><div class="sc-t">{t.sleep1}</div><div class="sc-b">{t.sleep1b}</div></div>
+            <div class="sleep-card"><div class="sc-t">{t.sleep2}</div><div class="sc-b">{t.sleep2b}</div></div>
+            <div class="sleep-card"><div class="sc-t">{t.sleep3}</div><div class="sc-b">{t.sleep3b}</div></div>
+          </div>
+        </div>
+        <div class="phone phone-sleep">
+          <div class="phone-screen">
+            <img src="/screenshots/sleep.webp" width="1290" height="2796" alt="Habits Pioneer sleep module" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <!-- ===================== STATS / GAMIFICATION ===================== -->
+    <section class="stats-section" aria-labelledby="stats-h">
+      <div>
+        <p class="eyebrow">{t.statsKicker}</p>
+        <h2 id="stats-h" class="h2 h2-sub">{t.statsTitle}</h2>
+        <p class="lead">{t.statsBody}</p>
+        <ul class="bullets">
+          <li><span class="dot" style="background:var(--violet)"></span><span>{t.stats1}</span></li>
+          <li><span class="dot" style="background:var(--amber)"></span><span>{t.stats2}</span></li>
+          <li><span class="dot" style="background:var(--coral)"></span><span>{t.stats3}</span></li>
+        </ul>
+      </div>
+      <div class="stats-grid">
+        <div class="card rings-card">
+          <svg width="118" height="118" viewBox="0 0 140 140" aria-hidden="true">
+            <circle cx="70" cy="70" r="63" fill="none" stroke="var(--screen-empty)" stroke-width="13"></circle>
+            <circle data-ring cx="70" cy="70" r="63" fill="none" stroke="var(--violet)" stroke-width="13"
+              stroke-linecap="round" stroke-dasharray="396" stroke-dashoffset="99" transform="rotate(-90 70 70)"
+              class="ring-anim r-outer"></circle>
+            <circle cx="70" cy="70" r="46" fill="none" stroke="var(--screen-empty)" stroke-width="13"></circle>
+            <circle data-ring cx="70" cy="70" r="46" fill="none" stroke="var(--amber)" stroke-width="13"
+              stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="130" transform="rotate(-90 70 70)"
+              class="ring-anim r-inner"></circle>
+          </svg>
+          <div>
+            <div class="rings-t">{t.ringsTitle}</div>
+            <div class="rings-b">{t.ringsBody}</div>
+          </div>
+        </div>
+        <div class="card chart-card">
+          <div class="bars" aria-hidden="true">
+            {
+              [64, 44, 78, 100, 86, 58, 72].map((h, i) => (
+                <span
+                  data-ring
+                  class="bar bar-anim"
+                  style={`height:${h}%;background:${h === 100 ? 'var(--violet)' : 'var(--violet-soft)'};animation-delay:${0.05 + i * 0.07}s`}
+                />
+              ))
+            }
+          </div>
+          <div class="chart-t">{t.chartTitle}</div>
+          <div class="chart-b">{t.chartBody}</div>
+        </div>
+        <div class="xp-card">
+          <div class="xp-v">{t.xpValue}</div>
+          <div class="xp-b">{t.xpBody}</div>
+          <div class="xp-bar"><span style="width:68%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery-section" aria-labelledby="gallery-h">
+      <div class="gallery-head">
+        <h2 id="gallery-h" class="h2 h2-gallery">{t.galleryTitle}</h2>
+        <p class="section-sub">{t.gallerySub}</p>
+      </div>
+      <div class="gallery-grid">
+        {
+          [
+            { src: '/screenshots/home.webp', cap: t.gal1 },
+            { src: '/screenshots/stats.webp', cap: t.gal2 },
+            { src: '/screenshots/sleep.webp', cap: t.gal3 },
+          ].map((g) => (
+            <figure class="gallery-item">
+              <div class="phone phone-gallery">
+                <div class="phone-screen">
+                  <img src={g.src} width="1290" height="2796" alt={`Habits Pioneer — ${g.cap}`} loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <figcaption>{g.cap}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===================== PRIVACY ===================== -->
+    <section id="privacy" class="privacy-section" aria-labelledby="privacy-h">
+      <div class="section-head">
+        <p class="eyebrow">{t.privKicker}</p>
+        <h2 id="privacy-h" class="h2">{t.privTitle}</h2>
+        <p class="section-sub">{t.privBody}</p>
+      </div>
+      <div class="privacy-grid">
+        <div class="card priv-card"><h3>{t.priv1}</h3><p>{t.priv1b}</p></div>
+        <div class="card priv-card"><h3>{t.priv2}</h3><p>{t.priv2b}</p></div>
+        <div class="card priv-card"><h3>{t.priv3}</h3><p>{t.priv3b}</p></div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section id="download" class="final-cta">
+      <svg class="final-stones" width="74" height="84" viewBox="0 0 60 68" aria-hidden="true">
+        <ellipse data-dot cx="30" cy="20" rx="14" ry="9" fill="#DE7358" class="settle" style="transform-origin:30px 20px;animation-delay:.7s"></ellipse>
+        <ellipse data-dot cx="30" cy="35" rx="20" ry="11" fill="#E5A03C" class="settle" style="transform-origin:30px 35px;animation-delay:.35s"></ellipse>
+        <ellipse data-dot cx="30" cy="53" rx="26" ry="13" fill="#CDC3B4" class="settle" style="transform-origin:30px 53px;animation-delay:0s"></ellipse>
+      </svg>
+      <h2 class="h2 h2-final">{t.finalTitle}</h2>
+      <p class="final-sub">{t.finalSub}</p>
+      <div class="final-stores"><StoreButtons lang={lang} variant="final" /></div>
+      <p class="final-note">{t.finalNote}</p>
+    </section>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <StoneLogo width={20} />
+        <span>{t.footerRights}</span>
+      </div>
+      <div class="footer-lang">
+        <span>{t.footerLang}</span>
+        <nav class="lang-switch" aria-label={t.footerLang}>
+          {
+            LOCALES.map((l) => (
+              <a href={home(l)} class={`lang-pill ${l === lang ? 'on' : ''}`} aria-current={l === lang ? 'true' : undefined} hreflang={l}>
+                {langLabel[l]}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<style>
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 244, 239, 0.82);
+    backdrop-filter: blur(12px);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px var(--gutter);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wordmark {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 14.5px;
+  }
+  .main-nav a {
+    color: var(--muted);
+  }
+  .main-nav a:hover {
+    color: var(--violet);
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .lang-switch {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: #ede7de;
+  }
+  .lang-pill {
+    padding: 6px 11px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #6a6157; /* AA on the #EDE7DE pill track */
+    transition:
+      background 0.18s,
+      color 0.18s;
+  }
+  .lang-pill:hover {
+    color: var(--ink);
+  }
+  .lang-pill.on {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .cta-btn {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.16s ease;
+  }
+  .cta-btn:hover {
+    background: var(--violet);
+    color: #fff;
+  }
+
+  /* ---------- shared ---------- */
+  .h2 {
+    font-size: var(--h2);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .h2-sub {
+    font-size: var(--h2-sub);
+  }
+  .section-head {
+    max-width: 34em;
+    margin-bottom: 44px;
+  }
+  .section-head.center {
+    text-align: center;
+    margin: 0 auto 12px;
+  }
+  .section-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+  .eyebrow.violet {
+    color: var(--violet-deep); /* AA-safe violet for small eyebrow text */
+  }
+  .lead {
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 28px;
+    text-wrap: pretty;
+  }
+  .bullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bullets li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-top: 8px;
+    flex: none;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+  }
+  .h3-28 {
+    font-size: var(--h3-28);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .h3-22 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 24px;
+  }
+
+  /* ---------- phone mockups ---------- */
+  .phone {
+    position: relative;
+    aspect-ratio: 1179 / 2556;
+    background: var(--ink);
+    border-radius: 42px;
+    padding: 9px;
+  }
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 34px;
+    overflow: hidden;
+    background: var(--screen-empty);
+  }
+  .phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 48px;
+    align-items: center;
+    padding: 64px 0 90px;
+  }
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--surface-violet);
+    color: var(--violet-deep);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 0 26px;
+  }
+  .hero-title {
+    font-size: var(--h1);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .hero-sub {
+    font-size: 18.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 34px;
+    max-width: 30em;
+    text-wrap: pretty;
+  }
+  .hero-note {
+    margin: 22px 0 0;
+    font-size: 13.5px;
+    color: var(--muted-2);
+  }
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-glow {
+    position: absolute;
+    top: 8%;
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e9e1ff 0%, rgba(247, 244, 239, 0) 68%);
+    animation: breathe 9s ease-in-out infinite;
+  }
+  .phone-hero {
+    position: relative;
+    width: 300px;
+    box-shadow: 0 30px 70px -30px rgba(23, 19, 16, 0.45);
+  }
+
+  /* ---------- trust strip ---------- */
+  .trust-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 1px;
+    background: var(--border-2);
+    border: 1px solid var(--border-2);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: var(--section-gap);
+  }
+  .trust-cell {
+    background: var(--bg);
+    padding: 22px 24px;
+  }
+  .trust-t {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .trust-b {
+    font-size: 13.5px;
+    color: var(--muted-2);
+  }
+
+  /* ---------- steps ---------- */
+  .steps-section {
+    margin-bottom: var(--section-gap);
+  }
+  .steps-mobile {
+    display: none;
+  }
+  .steps-illus {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 40px auto 0;
+    aspect-ratio: 1000 / 680;
+  }
+  .steps-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  [data-step] {
+    opacity: 0;
+    transform: scale(0.3);
+    transition:
+      opacity 0.35s ease,
+      transform 0.5s cubic-bezier(0.2, 1.5, 0.4, 1);
+  }
+  .step-marker {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .step-label-wrap {
+    position: absolute;
+    width: 240px;
+    text-align: center;
+  }
+  .step-label-wrap.pb {
+    padding-bottom: 24px;
+  }
+  .step-label-wrap.pt {
+    padding-top: 24px;
+  }
+  .step-label {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.45s ease,
+      transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+  .step-index {
+    font-family: var(--font-head);
+    font-size: 13px;
+    color: var(--kicker);
+    margin-bottom: 6px;
+  }
+  .step-text {
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  /* ---------- coach ---------- */
+  .coach-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 56px;
+    align-items: center;
+    padding: 56px;
+    border-radius: 32px;
+    background: #fff;
+    border: 1px solid var(--border);
+    margin-bottom: var(--section-gap);
+  }
+  .phone-coach {
+    width: 270px;
+    justify-self: center;
+    border-radius: 38px;
+    padding: 8px;
+    box-shadow: 0 24px 60px -28px rgba(23, 19, 16, 0.4);
+  }
+  .phone-coach .phone-screen {
+    border-radius: 31px;
+  }
+  .privacy-note {
+    margin-top: 28px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: var(--bg);
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ---------- habits ---------- */
+  .habits-section {
+    margin-bottom: var(--section-gap);
+  }
+  .freq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .freq-card {
+    padding: 30px;
+  }
+  .chip {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chip span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .freq-card h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .freq-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+  .reduce-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 20px;
+  }
+  .reduce-card {
+    padding: 38px;
+    border-radius: 24px;
+    background: var(--surface-warm);
+    border: 1px solid var(--border-warm);
+  }
+  .reduce-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #c05513; /* darker orange so white label meets AA */
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .reduce-body {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 26px;
+    max-width: 34em;
+  }
+  .reduce-stat {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 20px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--border-warm);
+    max-width: 420px;
+  }
+  .reduce-stat-txt {
+    min-width: 0;
+    flex: 1 1 180px;
+  }
+  .reduce-stat-v {
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    text-wrap: balance;
+  }
+  .reduce-stat-s {
+    font-size: 14px;
+    color: var(--muted-2);
+  }
+  .reduce-shot {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--screen-empty);
+    border: 1px solid var(--border);
+    min-height: 340px;
+  }
+  .reduce-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .phases-card {
+    margin-top: 20px;
+    padding: 38px;
+  }
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: 16px;
+  }
+  .phase {
+    padding: 24px;
+    border-radius: 20px;
+  }
+  .phase.warm {
+    background: var(--surface-warm);
+  }
+  .phase.green {
+    background: var(--surface-green);
+  }
+  .phase-label {
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .phase-v {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .phase-bar {
+    height: 6px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .phase-bar.warm {
+    background: var(--border-warm);
+  }
+  .phase-bar.green {
+    background: #dce7de;
+  }
+  .phase-bar span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+  }
+  .phase-bar.warm span {
+    background: var(--orange);
+  }
+  .phase-bar.green span {
+    background: var(--green);
+  }
+  .phase-s {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .challenge-panel {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 36px;
+    align-items: center;
+    padding: 40px;
+    border-radius: 24px;
+    background: var(--surface-violet);
+    border: 1px solid var(--violet-line);
+  }
+  .challenge-body {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: #4a4258;
+    margin: 0 0 22px;
+    text-wrap: pretty;
+  }
+  .day-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    flex: none;
+  }
+  .day-chip.on {
+    background: var(--violet-deep);
+    color: #fff;
+  }
+  .challenge-card {
+    padding: 28px;
+    border-radius: 20px;
+    background: #fff;
+  }
+  .challenge-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 500;
+    color: #b45510; /* AA-safe orange text */
+  }
+  .cb-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .challenge-quote {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 20px;
+    text-wrap: pretty;
+  }
+  .challenge-bar {
+    height: 8px;
+    border-radius: 999px;
+    background: var(--screen-empty);
+    overflow: hidden;
+  }
+  .challenge-bar span {
+    display: block;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  /* ---------- sleep ---------- */
+  .sleep-section {
+    padding: 64px 56px;
+    border-radius: 32px;
+    background: var(--night);
+    color: var(--on-night);
+    margin-bottom: var(--section-gap);
+  }
+  .sleep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .sleep-kicker {
+    color: var(--on-night-4);
+  }
+  .sleep-title {
+    color: var(--on-night);
+  }
+  .sleep-body {
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: var(--on-night-2);
+    margin: 0 0 32px;
+    max-width: 32em;
+    text-wrap: pretty;
+  }
+  .sleep-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+    gap: 16px;
+  }
+  .sleep-card {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .sc-t {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .sc-b {
+    font-size: 13.5px;
+    color: var(--on-night-3);
+    line-height: 1.5;
+  }
+  .phone-sleep {
+    width: 260px;
+    justify-self: center;
+    background: var(--night-2);
+    border-radius: 38px;
+    padding: 8px;
+  }
+  .phone-sleep .phone-screen {
+    border-radius: 31px;
+    background: var(--night-3);
+  }
+
+  /* ---------- stats ---------- */
+  .stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
+    gap: 56px;
+    align-items: center;
+    margin-bottom: var(--section-gap);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .rings-card {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 30px;
+  }
+  .rings-t {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .rings-b {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 26em;
+  }
+  .chart-card {
+    padding: 26px;
+  }
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 96px;
+    margin-bottom: 18px;
+  }
+  .bar {
+    flex: 1;
+    border-radius: 6px;
+    transform-origin: bottom;
+  }
+  .chart-t {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .chart-b {
+    font-size: 14px;
+    color: var(--muted-2);
+    line-height: 1.5;
+  }
+  .xp-card {
+    padding: 26px;
+    border-radius: 24px;
+    background: var(--ink);
+    color: var(--on-night);
+  }
+  .xp-v {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .xp-b {
+    font-size: 14.5px;
+    color: var(--on-night-3);
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .xp-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    overflow: hidden;
+  }
+  .xp-bar span {
+    display: block;
+    height: 100%;
+    background: var(--amber);
+  }
+
+  /* ---------- reveal animations (paused until in view) ---------- */
+  .ring-anim {
+    animation: ringGrow 1.6s cubic-bezier(0.3, 0.8, 0.3, 1) both;
+    animation-play-state: paused;
+  }
+  .r-outer {
+    animation-duration: 1.8s;
+  }
+  .r-inner {
+    animation-duration: 1.8s;
+    animation-delay: 0.15s;
+  }
+  .bar-anim {
+    animation: barGrow 0.7s cubic-bezier(0.3, 0.9, 0.3, 1) both;
+    animation-play-state: paused;
+  }
+  .settle {
+    animation: settle 0.8s cubic-bezier(0.2, 1.2, 0.4, 1) both;
+    animation-play-state: paused;
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery-section {
+    margin-bottom: var(--section-gap);
+  }
+  .gallery-head {
+    margin-bottom: 36px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: 24px;
+  }
+  .gallery-item {
+    margin: 0;
+  }
+  .phone-gallery {
+    border-radius: 32px;
+    padding: 8px;
+  }
+  .phone-gallery .phone-screen {
+    border-radius: 25px;
+  }
+  .gallery-item figcaption {
+    margin-top: 14px;
+    font-size: 14.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ---------- privacy ---------- */
+  .privacy-section {
+    margin-bottom: var(--section-gap);
+  }
+  .privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: 20px;
+  }
+  .priv-card {
+    padding: 30px;
+  }
+  .priv-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .priv-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ---------- final CTA ---------- */
+  .final-cta {
+    text-align: center;
+    padding: 80px 40px 88px;
+    border-radius: 32px;
+    background: #fff;
+    border: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+  .final-stones {
+    margin: 0 auto 26px;
+  }
+  .h2-final {
+    font-size: var(--h2-final);
+    letter-spacing: -0.03em;
+    margin: 0 auto 16px;
+    max-width: 16em;
+  }
+  .final-sub {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 auto 34px;
+    max-width: 30em;
+  }
+  .final-stores {
+    display: flex;
+    justify-content: center;
+  }
+  .final-note {
+    margin: 24px 0 0;
+    font-size: 13.5px;
+    color: var(--muted-2);
+  }
+
+  /* ---------- footer ---------- */
+  .site-footer {
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    padding-bottom: 56px;
+    font-size: 14px;
+    color: var(--muted-2);
+  }
+  .footer-brand,
+  .footer-lang {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-lang {
+    gap: 16px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .main-nav {
+      display: none;
+    }
+    .header-inner {
+      gap: 12px;
+    }
+    .wordmark {
+      font-size: 16px;
+    }
+  }
+  /* On phones the logo + language switch + CTA don't all fit — drop the header
+     CTA (the store buttons sit right below in the hero and in the final CTA). */
+  @media (max-width: 560px) {
+    .cta-btn {
+      display: none;
+    }
+  }
+  @media (max-width: 700px) {
+    .steps-illus {
+      display: none;
+    }
+    .steps-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      margin: 32px 0 0;
+      padding: 0;
+      counter-reset: none;
+    }
+    .steps-mobile li {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      padding: 16px 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .steps-mobile li:last-child {
+      border-bottom: 0;
+    }
+    .sm-num {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      color: #b45510; /* AA-safe orange on cream */
+      flex: none;
+      min-width: 26px;
+    }
+    .sm-label {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+  }
+  @media (max-width: 640px) {
+    .coach-card,
+    .sleep-section {
+      padding: 28px;
+    }
+    .final-cta {
+      padding: 56px 24px 60px;
+    }
+    .reduce-card,
+    .phases-card {
+      padding: 26px;
+    }
+    .challenge-panel {
+      padding: 26px;
+    }
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .rings-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 18px;
+    }
+    .hero {
+      padding: 32px 0 60px;
+    }
+  }
+</style>
+
+<script>
+  import '../scripts/steps';
+</script>

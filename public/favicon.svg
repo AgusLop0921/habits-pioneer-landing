@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Habits Pioneer">
+  <rect width="64" height="64" rx="15" fill="#171310"/>
+  <g transform="translate(2,4)">
+    <ellipse cx="30" cy="20" rx="14" ry="9" fill="#DE7358"/>
+    <ellipse cx="30" cy="35" rx="20" ry="11" fill="#E5A03C"/>
+    <ellipse cx="30" cy="53" rx="26" ry="13" fill="#F0EBE3"/>
+  </g>
+</svg>

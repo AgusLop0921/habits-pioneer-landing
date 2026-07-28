@@ -1,0 +1,75 @@
+---
+import '../styles/tokens.css';
+import { STR, HTML_LANG, LOCALES, localePrefix, type Locale } from '../data/strings';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = STR[lang];
+const site = Astro.site?.href.replace(/\/$/, '') ?? 'https://habitspioneer.com';
+const url = (l: Locale) => `${site}${localePrefix[l]}/`;
+const canonical = url(lang);
+const ogImage = `${site}/og/og-cover.png`;
+
+// JSON-LD: helps Google show the app as a rich result.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  name: 'Habits Pioneer',
+  operatingSystem: 'iOS, Android',
+  applicationCategory: 'HealthApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  description: t.metaDescription,
+  inLanguage: lang,
+  url: canonical,
+  image: ogImage,
+};
+---
+
+<!doctype html>
+<html lang={HTML_LANG[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.metaTitle}</title>
+    <meta name="description" content={t.metaDescription} />
+    <link rel="canonical" href={canonical} />
+
+    {/* hreflang alternates — tell Google which URL serves which language */}
+    {LOCALES.map((l) => <link rel="alternate" hreflang={HTML_LANG[l]} href={url(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={url('es')} />
+
+    {/* Open Graph / Twitter */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Habits Pioneer" />
+    <meta property="og:title" content={t.metaTitle} />
+    <meta property="og:description" content={t.metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={HTML_LANG[lang].replace('-', '_')} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.metaTitle} />
+    <meta name="twitter:description" content={t.metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {/* icons + PWA */}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#F7F4EF" />
+
+    {/* LCP hint: the hero screenshot */}
+    <link rel="preload" as="image" href="/screenshots/home.webp" fetchpriority="high" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+  </body>
+</html>
