@@ -312,6 +312,10 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
             <circle data-ring cx="70" cy="70" r="46" fill="none" stroke="var(--amber)" stroke-width="13"
               stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="130" transform="rotate(-90 70 70)"
               class="ring-anim r-inner"></circle>
+            <circle cx="70" cy="70" r="29" fill="none" stroke="var(--screen-empty)" stroke-width="13"></circle>
+            <circle data-ring cx="70" cy="70" r="29" fill="none" stroke="var(--green)" stroke-width="13"
+              stroke-linecap="round" stroke-dasharray="182" stroke-dashoffset="36" transform="rotate(-90 70 70)"
+              class="ring-anim r-inner3"></circle>
           </svg>
           <div>
             <div class="rings-t">{t.ringsTitle}</div>
@@ -1164,6 +1168,10 @@ const challengeDays = [14, 21, 30, 45, 66, 90];
   .r-inner {
     animation-duration: 1.8s;
     animation-delay: 0.15s;
+  }
+  .r-inner3 {
+    animation-duration: 1.8s;
+    animation-delay: 0.3s;
   }
   .bar-anim {
     animation: barGrow 0.7s cubic-bezier(0.3, 0.9, 0.3, 1) both;
