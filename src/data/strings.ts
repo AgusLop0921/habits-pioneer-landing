@@ -38,6 +38,13 @@ export interface Strings {
   privKicker: string; privTitle: string; privBody: string;
   priv1: string; priv1b: string; priv2: string; priv2b: string; priv3: string; priv3b: string;
   finalTitle: string; finalSub: string; finalNote: string; finalNoteIos: string;
+  // pricing
+  navPricing: string; pricingKicker: string; pricingTitle: string; pricingSub: string;
+  planFreeName: string; planFreePrice: string; planFreeTag: string;
+  planFree1: string; planFree2: string; planFree3: string; planFree4: string;
+  planProName: string; planProPrice: string; planProPer: string; planProMonthly: string;
+  planProBadge: string; planProTrial: string; planProTag: string;
+  planPro1: string; planPro2: string; planPro3: string; planNote: string;
   footerRights: string; footerLang: string; footerContact: string;
   footerTerms: string; footerPrivacy: string;
   // meta (added for SEO — not in prototype)
@@ -106,6 +113,20 @@ export const STR: Record<Locale, Strings> = {
     finalTitle: 'Better habits, every day.', finalSub: 'Add the good, drop the bad. All in one calm app.',
     finalNote: 'iOS 16+ and Android 10+ · Free to start',
     finalNoteIos: 'iOS 16+ · Free to start',
+    navPricing: 'Pricing', pricingKicker: 'Plans',
+    pricingTitle: 'Free to live in. Pro when you want more coach.',
+    pricingSub: 'The whole tracker is free, forever. Pioneer Pro only unlocks unlimited AI coaching.',
+    planFreeName: 'Free', planFreePrice: '$0', planFreeTag: 'Everything you need to build habits',
+    planFree1: 'Unlimited habits, tasks & reminders',
+    planFree2: 'Sleep, journal, stats & streaks',
+    planFree3: 'Sync & encrypted backups',
+    planFree4: '1 AI coach conversation per month',
+    planProName: 'Pioneer Pro', planProPrice: 'US$9.99', planProPer: '/yr', planProMonthly: 'or US$1.99/mo',
+    planProBadge: 'SAVE 58%', planProTrial: '7 days free', planProTag: 'Unlimited coach, whenever you need it',
+    planPro1: 'Everything in Free',
+    planPro2: 'Unlimited AI coach conversations',
+    planPro3: 'Reduction plans tailored to you, always on hand',
+    planNote: 'Manage or cancel anytime. Prices in USD; your store shows your local price.',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Language', footerContact: 'Contact',
     footerTerms: 'Terms', footerPrivacy: 'Privacy',
     metaTitle: 'Habits Pioneer — Better habits, every day, with an AI coach',
@@ -173,6 +194,20 @@ export const STR: Record<Locale, Strings> = {
     finalTitle: 'Mejores hábitos, cada día.', finalSub: 'Sumá lo bueno, dejá lo malo. Todo en una app calma.',
     finalNote: 'iOS 16+ y Android 10+ · Empezá gratis',
     finalNoteIos: 'iOS 16+ · Empezá gratis',
+    navPricing: 'Precios', pricingKicker: 'Planes',
+    pricingTitle: 'Gratis para vivir. Pro cuando querés más coach.',
+    pricingSub: 'Todo el tracker es gratis, para siempre. Pioneer Pro solo desbloquea el coach de IA ilimitado.',
+    planFreeName: 'Gratis', planFreePrice: '$0', planFreeTag: 'Todo lo que necesitás para crear hábitos',
+    planFree1: 'Hábitos, tareas y recordatorios ilimitados',
+    planFree2: 'Sueño, diario, estadísticas y rachas',
+    planFree3: 'Sync y respaldos cifrados',
+    planFree4: '1 conversación con el coach IA por mes',
+    planProName: 'Pioneer Pro', planProPrice: 'US$9.99', planProPer: '/año', planProMonthly: 'o US$1.99/mes',
+    planProBadge: 'AHORRÁS 58%', planProTrial: '7 días gratis', planProTag: 'Coach ilimitado, cuando lo necesites',
+    planPro1: 'Todo lo del plan gratis',
+    planPro2: 'Conversaciones con el coach IA sin límite',
+    planPro3: 'Planes de reducción a tu medida, siempre a mano',
+    planNote: 'Gestionás o cancelás cuando quieras. Precios en USD; tu tienda te muestra el precio local.',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contacto',
     footerTerms: 'Términos', footerPrivacy: 'Privacidad',
     metaTitle: 'Habits Pioneer — Mejores hábitos, cada día, con un coach de IA',
@@ -240,6 +275,20 @@ export const STR: Record<Locale, Strings> = {
     finalTitle: 'Melhores hábitos, todo dia.', finalSub: 'Some o bom, largue o ruim. Tudo em um app calmo.',
     finalNote: 'iOS 16+ e Android 10+ · Comece grátis',
     finalNoteIos: 'iOS 16+ · Comece grátis',
+    navPricing: 'Preços', pricingKicker: 'Planos',
+    pricingTitle: 'Grátis para viver. Pro quando quiser mais coach.',
+    pricingSub: 'O app inteiro é grátis, para sempre. O Pioneer Pro só desbloqueia o coach de IA ilimitado.',
+    planFreeName: 'Grátis', planFreePrice: '$0', planFreeTag: 'Tudo o que você precisa para criar hábitos',
+    planFree1: 'Hábitos, tarefas e lembretes ilimitados',
+    planFree2: 'Sono, diário, estatísticas e sequências',
+    planFree3: 'Sync e backups criptografados',
+    planFree4: '1 conversa com o coach IA por mês',
+    planProName: 'Pioneer Pro', planProPrice: 'US$9.99', planProPer: '/ano', planProMonthly: 'ou US$1.99/mês',
+    planProBadge: 'ECONOMIZE 58%', planProTrial: '7 dias grátis', planProTag: 'Coach ilimitado, quando você precisar',
+    planPro1: 'Tudo do plano grátis',
+    planPro2: 'Conversas com o coach IA sem limite',
+    planPro3: 'Planos de redução sob medida, sempre à mão',
+    planNote: 'Gerencie ou cancele quando quiser. Preços em USD; sua loja mostra o preço local.',
     footerRights: '© 2026 Habits Pioneer', footerLang: 'Idioma', footerContact: 'Contato',
     footerTerms: 'Termos', footerPrivacy: 'Privacidade',
     metaTitle: 'Habits Pioneer — Melhores hábitos, todo dia, com um coach de IA',
